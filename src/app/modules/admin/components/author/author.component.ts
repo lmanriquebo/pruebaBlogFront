@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit , TemplateRef} from '@angular/core';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import swal  from 'sweetalert2';
 
 @Component({
   selector: 'app-author',
@@ -7,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthorComponent implements OnInit {
 
-  constructor() { }
+
+  @Input()
+  author:any;
+
+  modalRef: BsModalRef;
+  constructor(private modalService: BsModalService) { }
+
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
+  }
 
   ngOnInit(): void {
+    swal.fire(
+      'Good job!',
+      'You clicked the button!',
+      'success'
+    )
   }
 
 }

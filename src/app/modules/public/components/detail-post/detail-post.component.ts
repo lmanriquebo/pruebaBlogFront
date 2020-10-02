@@ -9,6 +9,7 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 export class DetailPostComponent implements OnInit {
   @Input()
   post:any;
+  @Input()
   modalRef: BsModalRef;
 
   constructor(private modalService: BsModalService) { }

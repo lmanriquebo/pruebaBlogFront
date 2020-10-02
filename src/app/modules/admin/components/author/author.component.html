@@ -1,1 +1,19 @@
-<p>author works!</p>
+<div class="card border-secondary" style="width: 18rem;">
+  <div class="card-body">
+    <button type="button" class="close" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <h5 class="card-title">Author</h5>
+    <a href="javascript:void(0);" (click)="openModal(template)">
+        <div *ngIf="author.first_name">
+          <p class="card-text">{{author.first_name}} {{author.last_name}}</p>
+        </div>
+        <div *ngIf="!author.first_name">
+          <p class="card-text">Crear Author</p>
+        </div>
+    </a>
+  </div>
+</div>
+<ng-template #template>
+  <app-author-detail [modalRef]="modalRef" [author]="author"></app-author-detail>
+</ng-template>

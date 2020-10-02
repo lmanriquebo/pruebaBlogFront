@@ -1,15 +1,30 @@
-<div class="modal-header">
-  <h4 class="modal-title pull-left">Prueba</h4>
-  <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
-<div class="modal-body">
-  <div class="card mb-3">
-    <img class="card-img-top" src="https://www.webnode.es/blog/files/2016/10/Blog-intro.jpg" alt="Card image cap">
-    <div class="card-body">
-      <p class="card-text">aaaaaaaaaaaaaaaaaaaaa</p>
-      <p class="card-text"><small class="text-muted">Prueba2</small></p>
+<div class="card mb-4" style="max-width: 350px;">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <a href="javascript:void(0);" (click)="openModal(template)">
+        <div *ngIf="post.image">
+          <img src="{{post.image}}" class="card-img cardsHeith" alt="...">
+        </div>
+        <div *ngIf="!post.image">
+          <img src="https://e7.pngegg.com/pngimages/467/82/png-clipart-ikea-dybenko-cross-addition-hospital-icon-free-saint-petersburg-cross.png" class="card-img cardsHeith" alt="...">
+        </div>
+      </a>
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <button type="button" class="close" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <div *ngIf="post.title">
+          <h5 class="card-title">{{post.title}}</h5>
+        </div>
+        <div *ngIf="!post.title">
+          <h5 class="card-title">Crea Nuevo Post</h5>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+<ng-template #template>
+  <app-post-detail [modalRef]="modalRef" [post]="post" [authors]="authors"></app-post-detail>
+</ng-template>

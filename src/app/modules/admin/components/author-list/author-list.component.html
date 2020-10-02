@@ -1,1 +1,8 @@
-<p>author-list works!</p>
+<div class="container">
+  <hr>
+  <div class="card-deck">
+    <ng-container *ngFor="let author of authors">
+      <app-author [author]="author"></app-author>
+    </ng-container>
+  </div>
+</div>

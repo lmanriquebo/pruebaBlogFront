@@ -1,5 +1,8 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
-import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { Component, OnInit } from '@angular/core';
+import { PostModel } from '../../models/post-model';
+import { AuthorModel } from '../../models/author-model';
+import { PostService } from '../../services/post.service';
+import { AuthorService } from '../../services/author.service';
 
 @Component({
   selector: 'app-post-list',
@@ -8,14 +11,38 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 })
 export class PostListComponent implements OnInit {
 
-  modalRef: BsModalRef;
-  constructor(private modalService: BsModalService) { }
+  posts: PostModel[]=[];
+  authors: AuthorModel[]=[];
+  constructor(private postService: PostService, private authorService: AuthorService) { }
 
-  openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template);
-  }
+  empty = {
+    id :"",
+    title :"",
+    content :"",
+    image :"",
+    authors_id :"",
+    created_at :"",
+    updated_at :"",
+    deleted_at :null,
+    author :{
+      id : "",
+      first_name : "",
+      last_name : "",
+      created_at : "",
+      updated_at : "",
+      deleted_at : null
+    }
+  };
 
   ngOnInit(): void {
+    this.postService.getAllPost()
+    .then((posts: PostModel) => {
+      this.posts = posts['message'].concat(this.empty);
+    });
+    this.authorService.getAllAuthor()
+    .then((authors: AuthorModel) => {
+      this.authors = authors['message'];
+    });
   }
 
 }

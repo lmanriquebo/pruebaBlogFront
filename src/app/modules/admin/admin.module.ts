@@ -9,10 +9,12 @@ import { AuthorListComponent } from './components/author-list/author-list.compon
 import { PostListComponent } from './components/post-list/post-list.component';
 import { MainComponent } from './components/main/main.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { PostDetailComponent } from './components/post-detail/post-detail.component';
+import { AuthorDetailComponent } from './components/author-detail/author-detail.component';
 
 
 @NgModule({
-  declarations: [PostComponent, AuthorComponent, AuthorListComponent, PostListComponent, MainComponent],
+  declarations: [PostComponent, AuthorComponent, AuthorListComponent, PostListComponent, MainComponent, PostDetailComponent, AuthorDetailComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
