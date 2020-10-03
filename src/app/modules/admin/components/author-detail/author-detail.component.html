@@ -7,9 +7,9 @@
 <div class="modal-body">
 <div class="card mb-3">
   <div class="card-body">
-    <input type="text" class="form-control" id="first_name" name="first_name" value="{{author.first_name}}" placeholder="First Name">
+    <input type="text" class="form-control" id="first_name" name="first_name" [(ngModel)]="authorSp.first_name" placeholder="First Name">
     <hr>
-    <input type="text" class="form-control" id="last_name" name="last_name" value="{{author.last_name}}" placeholder="Last Name">
+    <input type="text" class="form-control" id="last_name" name="last_name" [(ngModel)]="authorSp.last_name" placeholder="Last Name">
     <div *ngIf="author.id">
       <hr>
       <p class="card-text"><small class="text-muted">{{author.updated_at | date}}</small></p>
@@ -18,7 +18,7 @@
     </div>
   </div>
   <hr>
-  <button type="button" class="btn btn-primary">
+  <button type="button" (click)="onPopupValCreUpd(authorSp)" class="btn btn-primary">
     <div *ngIf="author.id">
       Actualizar
     </div>

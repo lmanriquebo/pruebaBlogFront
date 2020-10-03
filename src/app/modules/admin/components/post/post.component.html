@@ -6,15 +6,17 @@
           <img src="{{post.image}}" class="card-img cardsHeith" alt="...">
         </div>
         <div *ngIf="!post.image">
-          <img src="https://e7.pngegg.com/pngimages/467/82/png-clipart-ikea-dybenko-cross-addition-hospital-icon-free-saint-petersburg-cross.png" class="card-img cardsHeith" alt="...">
+          <img src="assets/img/mas.svg" class="card-img cards-new" alt="...">
         </div>
       </a>
     </div>
     <div class="col-md-8">
       <div class="card-body">
-        <button type="button" class="close" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <div *ngIf="post.id">
+          <button type="button" (click)="onPopupDelete(post)" class="close" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
         <div *ngIf="post.title">
           <h5 class="card-title">{{post.title}}</h5>
         </div>
@@ -26,5 +28,5 @@
   </div>
 </div>
 <ng-template #template>
-  <app-post-detail [modalRef]="modalRef" [post]="post" [authors]="authors"></app-post-detail>
+  <app-post-detail [modalRef]="modalRef" [post]="post" [authors]="authors" [postSp]="postSp"></app-post-detail>
 </ng-template>

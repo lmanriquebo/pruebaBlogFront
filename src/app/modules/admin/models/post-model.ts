@@ -2,7 +2,9 @@ import { AuthorModel } from './author-model';
 
 export class PostModel {
   'id': string;
-  'tittle': string;
-  'image': string;
+  'title': string;
+  'content': string;
+  'image': any;
+  'author_id': number;
   'author': AuthorModel;
 }

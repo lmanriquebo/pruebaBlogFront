@@ -1,5 +1,5 @@
 <div class="modal-header">
-    <input type="text" class="form-control modal-title" id="title" name="title" value="{{post.title}}" placeholder="Title">
+    <input type="text" class="form-control modal-title" id="title" name="title" [(ngModel)]="postSp.title" placeholder="Title">
   <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
     <span aria-hidden="true">&times;</span>
   </button>
@@ -7,23 +7,23 @@
 <div class="modal-body">
   <div class="card mb-3">
     <div class="custom-file">
-      <input type="file" class="custom-file-input" id="customFileLang" lang="es">
+      <input type="file" accept="image/png, image/jpeg" (change)="handleFileInput($event.target.files)" class="custom-file-input" id="customFileLang" lang="es">
       <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
     </div>
     <div class="card-body">
-      <textarea class="form-control card-text" id="content" name="content" rows="4" placeholder="Content">{{post.content}}</textarea>
+      <textarea class="form-control card-text" [(ngModel)]="postSp.content" id="content" name="content" rows="4" placeholder="Content"></textarea>
       <hr>
-      <select class="custom-select" name="author_id" id="author_id">
-        <option value="{{post.author.id}}" selected>{{post.author.first_name}} {{post.author.last_name}}</option>
+      <select class="custom-select" [(ngModel)]="postSp.author_id" name="author_id" id="author_id">
+        <option [value]="post.author.id" selected>{{post.author.first_name}} {{post.author.last_name}}</option>
         <ng-container *ngFor="let author of authors">
           <ng-container *ngIf="author.id != post.author.id">
-            <option value="{{author.id}}">{{author.first_name}} {{author.last_name}}</option>
+            <option [value]="author.id">{{author.first_name}} {{author.last_name}}</option>
           </ng-container>
         </ng-container>
       </select>
     </div>
     <hr>
-    <button type="button" class="btn btn-primary">
+    <button type="button" (click)="onPopupValCreUpd(postSp)" class="btn btn-primary">
       <div *ngIf="post.id">
         Actualizar
       </div>

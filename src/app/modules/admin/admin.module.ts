@@ -11,12 +11,14 @@ import { MainComponent } from './components/main/main.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { PostDetailComponent } from './components/post-detail/post-detail.component';
 import { AuthorDetailComponent } from './components/author-detail/author-detail.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [PostComponent, AuthorComponent, AuthorListComponent, PostListComponent, MainComponent, PostDetailComponent, AuthorDetailComponent],
   imports: [
     CommonModule,
+    FormsModule,
     AdminRoutingModule,
     ButtonsModule.forRoot(),
     ModalModule.forRoot()

@@ -28,7 +28,6 @@ export class AuthorListComponent implements OnInit {
     this.authorService.getAllAuthor()
     .then((authors: AuthorModel) => {
       this.authors = authors['message'].concat(this.empty);
-      console.log(this.authors);
     });
   }
 

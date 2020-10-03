@@ -1,3 +1,9 @@
 .cardsHeith{
   height: 100px;
+  object-fit: cover;
+}
+
+.cards-new{
+  height: 100px;
+  padding: 16px;
 }
